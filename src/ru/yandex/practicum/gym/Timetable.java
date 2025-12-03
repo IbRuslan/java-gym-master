@@ -35,18 +35,18 @@ public class Timetable {
     public List<CounterOfTrainings> getCountByCoaches() {
         HashMap<Coach, Integer> result = new HashMap<>();
 
-        if(!timetable.isEmpty()) {
-            for(DayOfWeek dayOfWeek : timetable.keySet()) {
-                for(TimeOfDay timeOfDay : timetable.get(dayOfWeek).keySet()) {
-                    for(TrainingSession session : timetable.get(dayOfWeek).get(timeOfDay)) {
+        if (!timetable.isEmpty()) {
+            for (DayOfWeek dayOfWeek : timetable.keySet()) {
+                for (TimeOfDay timeOfDay : timetable.get(dayOfWeek).keySet()) {
+                    for (TrainingSession session : timetable.get(dayOfWeek).get(timeOfDay)) {
                         result.put(session.getCoach(), result.getOrDefault(session.getCoach(), 0) + 1);
                     }
                 }
             }
         }
 
-        List<CounterOfTrainings > list  = new ArrayList<>();
-        for(Map.Entry<Coach, Integer> entry : result.entrySet()) {
+        List<CounterOfTrainings> list  = new ArrayList<>();
+        for (Map.Entry<Coach, Integer> entry : result.entrySet()) {
             list.add(new CounterOfTrainings(entry.getKey(), entry.getValue()));
         }
 
